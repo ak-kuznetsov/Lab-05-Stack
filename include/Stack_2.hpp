@@ -11,12 +11,12 @@ class Stack_2 {
  public:
   Stack_2() = default;
   Stack_2(const Stack_2& stack) = delete;
-  Stack_2(Stack_2&& stack) noexcept {
+  Stack_2(Stack_2&& stack) {
     this->top = stack.top;
     stack.top = nullptr;
   }
   auto operator=(const Stack_2& stack) = delete;
-  auto operator=(Stack_2&& stack) noexcept -> Stack_2& {
+  auto operator=(Stack_2&& stack) -> Stack_2& {
     this->top = stack.top;
     stack.top = nullptr;
   }
@@ -27,7 +27,7 @@ class Stack_2 {
   void push(T&& value) {
     top = new Node<T>{std::forward<T>(value), top};
   }
-  const T& head() const {
+  const T& head() {
     if (top)
       return top->value;
     else {

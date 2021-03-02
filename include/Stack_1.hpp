@@ -17,12 +17,12 @@ class Stack_1 {
  public:
   Stack_1() = default;
   Stack_1(const Stack_1& stack) = delete;
-  Stack_1(Stack_1&& stack) noexcept {
+  Stack_1(Stack_1&& stack) {
     this->top = stack.top;
     stack.top = nullptr;
   }
   auto operator=(const Stack_1& stack) = delete;
-  auto operator=(Stack_1&& stack) noexcept -> Stack_1& {
+  auto operator=(Stack_1&& stack) -> Stack_1& {
     this->top = stack.top;
     stack.top = nullptr;
   }
@@ -49,7 +49,7 @@ class Stack_1 {
       throw std::runtime_error("Empty stack pop");
     }
   }
-  const T& head() const {
+  const T& head() {
     if (top)
       return top->value;
     else {
