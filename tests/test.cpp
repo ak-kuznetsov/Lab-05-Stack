@@ -5,6 +5,13 @@
 #include <Stack_2.hpp>
 TEST(Example, EmptyTest) { EXPECT_TRUE(true); }
 
+TEST(Stack_1, NoCopiable_Movable) {
+  EXPECT_TRUE(std::is_move_constructible<Stack_1<int>>::value);
+  EXPECT_TRUE(std::is_move_assignable<Stack_1<int>>::value);
+  EXPECT_FALSE(std::is_copy_constructible<Stack_1<int>>::value);
+  EXPECT_FALSE(std::is_copy_assignable<Stack_1<int>>::value);
+}
+
 TEST(Stack_1, Rvalue_test) {
   Stack_1<double> a;
   a.push(3.14);
