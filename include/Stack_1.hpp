@@ -26,6 +26,13 @@ class Stack_1 {
     this->top = stack.top;
     stack.top = nullptr;
   }
+  ~Stack_1() {
+    while (top) {
+      Node<T>* tmp = top->next;
+      delete (top);
+      top = tmp;
+    }
+  }
   void push(T&& value) {
     Node<T>* new_node;
     new_node = top;
@@ -49,19 +56,12 @@ class Stack_1 {
       throw std::runtime_error("Empty stack pop");
     }
   }
-  const T& head() {
+  const T& head() const {
     if (top)
       return top->value;
     else {
       throw std::runtime_error("Empty stack head");
     }
   }
-  ~Stack_1() {
-    while (top) {
-      Node<T>* tmp = top->next;
-      delete (top);
-      top = tmp;
-    }
-  };
 };
 #endif  // INCLUDE_STACK_1_HPP_

@@ -20,6 +20,13 @@ class Stack_2 {
     this->top = stack.top;
     stack.top = nullptr;
   }
+  ~Stack_2() {
+    while (top) {
+      Node<T>* tmp = top->next;
+      delete (top);
+      top = tmp;
+    }
+  }
   template <typename... Args>
   void push_emplace(Args&&... value) {
     top = new Node<T>{{std::forward<Args>(value)...}, top};
@@ -27,7 +34,7 @@ class Stack_2 {
   void push(T&& value) {
     top = new Node<T>{std::forward<T>(value), top};
   }
-  const T& head() {
+  const T& head() const {
     if (top)
       return top->value;
     else {
@@ -43,13 +50,6 @@ class Stack_2 {
       return data;
     } else {
       throw std::runtime_error("Empty stack pop");
-    }
-  }
-  ~Stack_2() {
-    while (top) {
-      Node<T>* tmp = top->next;
-      delete (top);
-      top = tmp;
     }
   }
 };

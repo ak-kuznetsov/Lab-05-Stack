@@ -6,10 +6,10 @@
 TEST(Example, EmptyTest) { EXPECT_TRUE(true); }
 
 TEST(Stack_1, NoCopiable_Movable) {
-  EXPECT_TRUE(std::is_move_constructible<Stack_1<int>>::value);
-  EXPECT_TRUE(std::is_move_assignable<Stack_1<int>>::value);
-  EXPECT_FALSE(std::is_copy_constructible<Stack_1<int>>::value);
-  EXPECT_FALSE(std::is_copy_assignable<Stack_1<int>>::value);
+  EXPECT_TRUE(std::is_move_constructible<Stack_1<int>>::value); /* Проверка на наличие конструктора перемещения */
+  EXPECT_TRUE(std::is_move_assignable<Stack_1<int>>::value); /* Проверка на наличие оператора перемещения */
+  EXPECT_FALSE(std::is_copy_constructible<Stack_1<int>>::value); /* Проверка на наличие конструктора копирования */
+  EXPECT_FALSE(std::is_copy_assignable<Stack_1<int>>::value); /* Проверка на наличие оператора присваивания */
 }
 
 TEST(Stack_1, Rvalue_test) {
@@ -62,7 +62,7 @@ class Cars {
   Cars(const Cars& Weather_today) = delete;
   Cars(Cars&& Weather_today) = default;
   auto operator=(const Cars& Weather_today) = delete;
-  auto operator=(Cars&& Weather_today) noexcept -> Cars& = default;
+  auto operator=(Cars&& Weather_today) -> Cars& = default;
   T toyota;
   T mazda;
   T nissan;
