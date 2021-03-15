@@ -6,10 +6,10 @@
 TEST(Example, EmptyTest) { EXPECT_TRUE(true); }
 
 TEST(Stack_1, NoCopiable_Movable) {
-  EXPECT_TRUE(std::is_move_constructible<Stack_1<int>>::value); /* Проверка на наличие конструктора перемещения */
-  EXPECT_TRUE(std::is_move_assignable<Stack_1<int>>::value); /* Проверка на наличие оператора перемещения */
-  EXPECT_FALSE(std::is_copy_constructible<Stack_1<int>>::value); /* Проверка на наличие конструктора копирования */
-  EXPECT_FALSE(std::is_copy_assignable<Stack_1<int>>::value); /* Проверка на наличие оператора присваивания */
+  EXPECT_TRUE(std::is_move_constructible<Stack_1<int>>::value); /* Проверка на наличие конструктора перемещения - Да */
+  EXPECT_TRUE(std::is_move_assignable<Stack_1<int>>::value); /* Проверка на наличие оператора перемещения - Да */
+  EXPECT_FALSE(std::is_copy_constructible<Stack_1<int>>::value); /* Проверка на наличие конструктора копирования - Нет */
+  EXPECT_FALSE(std::is_copy_assignable<Stack_1<int>>::value); /* Проверка на наличие оператора присваивания - Нет */
 }
 
 TEST(Stack_1, Rvalue_test) {

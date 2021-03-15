@@ -22,7 +22,7 @@ class Stack_1 {
     stack.top = nullptr;
   }
   auto operator=(const Stack_1& stack) = delete;
-  auto operator=(Stack_1&& stack) -> Stack_1& {
+  auto operator=(Stack_1&& stack) -> Stack_1& { /* Оператор перемещения */
     this->top = stack.top;
     stack.top = nullptr;
   }
