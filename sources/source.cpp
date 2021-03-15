@@ -1,3 +1,4 @@
-// Copyright 2020 Your Name <your_email>
+// Copyright 2021 ak-kuznetsov <a.kuznetsov2701@mail.ru>
 
-#include <header.hpp>
+#include <Stack_1.hpp>
+
